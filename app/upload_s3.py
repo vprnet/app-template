@@ -1,14 +1,16 @@
-#!/usr/local/bin/python
+#!/usr/local/bin/python2.7
+
 import os
 import hashlib
 import gzip
 import time
+import datetime
 from sys import argv
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 from config import (AWS_KEY, AWS_SECRET_KEY, AWS_BUCKET, AWS_DIRECTORY,
     HTML_EXPIRES, STATIC_EXPIRES, IGNORE_DIRECTORIES, IGNORE_FILES,
-    IGNORE_FILE_TYPES)
+    IGNORE_FILE_TYPES, ABSOLUTE_PATH)
 
 content_types = {
     '.css': 'text/css',
@@ -21,11 +23,17 @@ content_types = {
     '.csv': 'text/csv',
     '.html': 'text/html',
     '.svg': 'image/svg+xml',
+    '.eot': 'application/vnd.ms-fontobject',
+    '.ttf': 'font/opentype',
+    '.woff': 'application/font-woff',
     '.json': 'text/json'
 }
 
+PUSH_FROM = ABSOLUTE_PATH + 'build/'
+PATH_LENGTH = len(PUSH_FROM)
 
-def directory_list(argv, directory='app/build'):
+
+def directory_list(argv, directory=PUSH_FROM):
     """Creates a list of all non-excluded files in current directory
     and below"""
 
@@ -33,6 +41,7 @@ def directory_list(argv, directory='app/build'):
         IGNORE_DIRS = IGNORE_DIRECTORIES + argv[1:]
 
     file_list = []
+    print directory
     for root, dirs, files in os.walk(directory):
         for d in IGNORE_DIRS:
             if d in dirs:
@@ -61,9 +70,11 @@ def s3_filename():
             ext = os.path.splitext(i)[1]
             if ext in IGNORE_FILE_TYPES:
                 pass
+            elif i[0] == '.':
+                pass
             else:
-                if f[0] is not '.':
-                    s3_list.append(f[0][10:] + '/' + i)
+                if f[0] is not PUSH_FROM:
+                    s3_list.append(f[0][PATH_LENGTH:] + '/' + i)
                 else:
                     s3_list.append(i)
     return s3_list
@@ -88,7 +99,7 @@ def set_metadata():
 
         if ext == '.html':  # deletes '.html' from s3 key so no ext on url
             local_name = os.path.splitext(filename)[0]
-            if local_name == '/index':
+            if local_name == 'index':
                 local_name = '/index.html'
             if local_name[0] != '/':  # if file within child dir
                 k.key = AWS_DIRECTORY + '/' + local_name
@@ -100,7 +111,7 @@ def set_metadata():
             k.set_metadata('Expires', expires_header)
 
         if ext == '.css' or ext == '.js' or ext == '.html':
-            build_file = 'app/build/' + filename
+            build_file = PUSH_FROM + filename
             f_in = open(build_file, 'rb')
             with gzip.open(build_file + '.gz', 'w+') as f:
                 f.writelines(f_in)
@@ -108,12 +119,14 @@ def set_metadata():
             f = build_file + '.gz'
             k.set_metadata('Content-Encoding', 'gzip')
         else:
-            f = 'app/build/' + filename
-
-        print k.key
+            f = PUSH_FROM + filename
 
         k.set_metadata('Content-Type', content_types[ext])
         etag_hash = hashlib.sha1(f + str(time.time())).hexdigest()
         k.set_metadata('ETag', etag_hash)
         k.set_contents_from_filename(f)
         k.make_public()
+        print k.key
+
+    print '\nApp successfully updated'
+    print "On " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
