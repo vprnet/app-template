@@ -10,7 +10,6 @@ $btn-percent: 1%;
 $tablet: 768px;
 
 body {
-    padding-top: 45px;
     padding-bottom: 40px;
 }
 
@@ -25,12 +24,13 @@ body {
     filter: none;
     background-image: linear-gradient(to bottom, lighten($green, $percent), darken($green, $percent));
     background-repeat: repeat-x;
-    border-color: #a2dc8a;
+    border-color: darken($green, 20%);
     background-image: -moz-linear-gradient(top, lighten($green, $percent), darken($green, $percent));
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(lighten($green, $percent)), to(darken($green, $percent)));
     background-image: -webkit-linear-gradient(top, lighten($green, $percent), darken($green, $percent));
     background-image: -o-linear-gradient(top, lighten($green, $percent), darken($green, $percent));
     min-height: 40px;
+    margin-bottom: 0;
     .navbar-header {
         float: none;
     }
@@ -54,6 +54,7 @@ body {
 footer {
     margin-top: 20px;
     float: right;
+    font-size: 10px;
 }
 
 #underwriter-nav {
