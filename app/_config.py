@@ -8,8 +8,10 @@ FREEZER_IGNORE_MIMETYPE_WARNINGS = True
 # Amazon S3 Settings
 AWS_KEY = ''
 AWS_SECRET_KEY = ''
-AWS_BUCKET = ''
-AWS_DIRECTORY = ''
+AWS_BUCKET = 'www.vpr.net'
+AWS_DIRECTORY = 'apps/app-template'
+
+NPR_API_KEY = ''
 
 # Cache Settings (units in seconds)
 STATIC_EXPIRES = 60 * 24 * 3600
@@ -26,5 +28,10 @@ if AWS_DIRECTORY:
 else:
     BASE_URL = 'http://' + AWS_BUCKET
 
-PROJECT_ROOT = ''
 ABSOLUTE_PATH = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) + '/'
+
+# If on my computer use local root
+if 'mparrilla' or 'm' in ABSOLUTE_PATH:
+    PROJECT_ROOT = '/'
+else:
+    PROJECT_ROOT = '/' + AWS_DIRECTORY

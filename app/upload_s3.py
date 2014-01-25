@@ -41,7 +41,6 @@ def directory_list(argv, directory=PUSH_FROM):
         IGNORE_DIRS = IGNORE_DIRECTORIES + argv[1:]
 
     file_list = []
-    print directory
     for root, dirs, files in os.walk(directory):
         for d in IGNORE_DIRS:
             if d in dirs:
@@ -126,7 +125,6 @@ def set_metadata():
         k.set_metadata('ETag', etag_hash)
         k.set_contents_from_filename(f)
         k.make_public()
-        print k.key
 
-    print '\nApp successfully updated'
+    print '\nHealthcare page successfully updated'
     print "On " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')

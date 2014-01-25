@@ -1,0 +1,19 @@
+<nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a id="link-home" class="navbar-brand" href="http://www.vpr.net">
+                <div id="vpr-logo"></div></a>
+            <h1 id="navbar-title">{% block h1 %}VPR App Template{% endblock %}</h1>
+            {% if social %}
+            <div id="social-logos">
+                <a href="https://plus.google.com/share?url={{ page_url|urlencode }}" target="_blank">
+                    <div id="google_icon" target="_blank"></div></a>
+                <a href="http://www.twitter.com/intent/tweet?url={{ page_url|urlencode }}&text={{ social.twitter_text|urlencode }}&via=vprnet&hashtags={{ social.twitter_hashtag|urlencode }}" target="_blank">
+                    <div id="twitter_icon"></div></a>
+                <a href="https://www.facebook.com/dialog/feed?app_id=282283015178&picture={{ social.img|urlencode }}&name={{ social.title|urlencode }}&caption={{ social.subtitle|urlencode }}&description={{ social.description|urlencode }}&redirect_uri={{ page_url|urlencode }}" target="_blank">
+                    <div id="facebook_icon"></div></a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>

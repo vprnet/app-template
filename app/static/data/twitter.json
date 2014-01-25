@@ -1,0 +1,53 @@
+{
+  "reporters": [
+    {"name": "Mitch Wertlieb",
+    "handle": "mwertlieb"},
+
+    {"name": "Melody Bodette",
+    "handle": "MelodyBodette"},
+
+    {"name": "Sage Van Wing",
+    "handle": "sagevanwing"},
+
+    {"name": "Nancy Eve Cohen",
+    "handle":"NancyEveCohen"},
+
+    {"name": "Angela Evancie",
+    "handle": "AJEvancie"},
+
+    {"name": "Charlotte Albright",
+    "handle": "VPRAlbright"},
+
+    {"name": "Bob Kinzel",
+    "handle": "VPRKinzel"},
+
+    {"name": "John Dillon",
+    "handle": "VPRDillon"},
+
+    {"name": "Peter Hirschfeld",
+    "handle": "PeteHirschfeld"},
+
+    {"name": "Jane Lindholm",
+    "handle": "JaneLindholm"},
+
+    {"name": "Ric Cengeri",
+    "handle": "riccengeri"},
+
+    {"name": "Steve Zind",
+    "handle": "SZvt"},
+
+    {"name": "John Van Hoesen",
+    "handle": "JVHvt"},
+
+    {"name": "Patti Daniels",
+    "handle": "pattidaniels"},
+
+    {"name": "Taylor Dobbs",
+    "handle": "taylordobbs"},
+
+    {"name": "Annie Russell",
+    "handle": "anniemrussell"},
+
+    {"name": "Amy Kolb Noyes",
+    "handle": "AmyKolbNoyes"}
+]}

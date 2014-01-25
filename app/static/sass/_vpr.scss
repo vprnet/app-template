@@ -40,9 +40,10 @@ body {
     #navbar-title {
         color: darken(white, 5%);
         font-size: 22px;
+        font-weight: 300;
         display: inline;
         position: relative;
-        top: 4px;
+        top: 8px;
         left: 10px;
         @media (max-width: $tablet) {
             display: none;

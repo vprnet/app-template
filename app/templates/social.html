@@ -1,0 +1,16 @@
+    {% if social %}
+    <meta property="og:description" content="{{ social.description|replace(' ', '%20') }}" />
+    <meta property="fb:admins" content="5735853" />
+    <meta property="og:title" content="{{ social.title|replace(' ', '%20') }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{ social.img }}" />
+    <meta property="og:url" content="{{ page_url }}" />
+    <meta property="og:site_name" content="Vermont%20Public%20Radio" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@vprnet">
+    <meta name="twitter:title" content="{{ social.title|replace(' ', '%20') }}">
+    <meta name="twitter:description" content="{{ social.description|replace(' ', '%20') }}">
+    <meta name="twitter:creator" content="@mattparrilla">
+    <meta name="twitter:image:src" content="{{ social.img }}">
+    {% endif %}
+
