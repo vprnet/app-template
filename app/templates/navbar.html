@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <a id="link-home" class="navbar-brand" href="http://www.vpr.net">
                 <div id="vpr-logo"></div></a>
-            <h1 id="navbar-title">{% block h1 %}VPR App Template{% endblock %}</h1>
+            <h1 id="navbar-title">{{ page_title }}</h1>
             {% if social %}
             <div id="social-logos">
                 <a href="https://plus.google.com/share?url={{ page_url|urlencode }}" target="_blank">
