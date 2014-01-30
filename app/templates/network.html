@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Under The Hood: VT Health Connect | VPR{% endblock %}
+
+{% block style %}
+    <link href="{{ url_for('static', filename='css/network.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container" id="network-map">
+    <div id="explanation">
+        <div class="active" id="par0">
+            <h3>How To Use This Tool</h3>
+            <p>This site will take you through a visualization of Vermont Health Connect's system, Vermont's custom built version of the Healthcare Exchange.</p>
+            <p>To navigate the process and learn about the sticking points in the exchange, click on "Get Started" in the bottom right corner of this window.</p>
+        </div>
+
+        <div class="inactive" id="par1">
+            <h3>User Creates Account</h3>
+            <p>In order to start the process, users create a profile on Vermont Health Connect. This is similar to creating an account on Facebook or Twitter.</p>
+            <p>After the account is made, users provide sensitive information such as social security number and address, which Vermont Health Connect will send to government databases for confirmation.</p>
+        </div>
+
+        <div class="inactive" id="par2">
+            <h3>Validate Personal Data</h3>
+            <p>Vermont Health Connect takes the users’ personal data and submits it to Vermont's Medicaid database and a federal Data Services Hub.</p>
+            <p>The federal hub then connects to databases such as Homeland Security, the IRS, Social Security Administration and the Centers for Medicare &amp; Medicaid Services.</p>
+        </div>
+
+        <div class="inactive" id="par3">
+            <h3>Determine Eligibility</h3>
+            <p>The databases confirm information about users and provide additional information, including citizenship status, veterans’ benefits, annual income and tax data which is used to determine subsidy eligibility.</p>
+            <p>Users now have a completed and confirmed profile on Vermont Health Connect.</p>
+        </div>
+
+        <div class="inactive" id="par4">
+            <h3>Match User To Plans</h3>
+            <p>Vermont Health Connect uses federal, state and user information to match users to a list of coverage options. These include public and private plans that they are eligible for.</p>
+        </div>
+
+        <div class="inactive" id="par5">
+            <h3>Select Plan, Send Payment</h3>
+            <p>Users then select a plan from the list of their coverage options. In order for coverage to begin, users need to pay a premium through the exchange.</p>
+            <p>Currently users are able to choose a plan&mdash;but not pay electronically.</p>
+        </div>
+
+        <div class="inactive" id="par6">
+        <h3>Payment System Unavailable</h3>
+            <p>While Vermont Health Connect's systems are working, the third party premium processing system isn't, so users can't pay for their insurance online.</p>
+            <p>Once the premium processor is up and running properly, the process can go on.</p>
+        </div>
+
+        <div class="inactive" id="par7">
+            <h3>Process Payment</h3>
+            <p>When the premium processor is able to receive a payment, it will send back a confirmation to Vermont Health Connect that users have paid and can now be insured.</p>
+        </div>
+
+        <div class="inactive" id="par8">
+            <h3>Insurance Company Notified</h3>
+            <p>With no additional action from users, Vermont Health Connect sends the users’ information to the coverage provider they’ve chosen along with confirmation that they’ve paid. Federal subsidies that users qualify for will be sent directly from the IRS to the coverage provider.</p>
+        </div>
+
+        <div class="inactive" id="par9">
+            <h3>Insurance Confirmed</h3>
+            <p>Once the provider’s computers have processed the incoming information, they send Vermont Health Connect a confirmation that the user has enrolled. Coverage can then begin.
+            </p>
+            <p><span class="bolder">The process is now complete.</span> The state expects approximately 75,000 people to complete this process before Jan. 1, 2014, when most plans will take effect.</p>
+        </div>
+
+    </div>
+
+    <div id="todo">
+        <h3>Steps To Success</h3>
+        <ul>
+            <li class="active" id="step0">User Arrives at VT Health Connect</li>
+            <li class="inactive" id="step1">User Creates Account</li>
+            <li class="inactive" id="step2">Validate Data with Government Systems</li>
+            <li class="inactive" id="step3">Data Confirmed; Eligibility Determined</li>
+            <li class="inactive" id="step4">Match User to Eligible Plans</li>
+            <li class="inactive" id="step5">User Selects Plan, Sends Payment</li>
+            <li class="inactive" id="step6">Premium Processor Confirms Payment</li>
+            <li class="inactive" id="step7">Insurance Company Notified of Enrollment</li>
+            <li class="inactive" id="step8">Insurance Confirmed</li>
+        </ul>
+    </div>
+
+    <div id="bottom-block">
+        <div id="byline">
+            <ul>
+                <li>The Reporter: <a href="http://www.twitter.com/taylordobbs">Taylor Dobbs</a></li>
+                <li>The Producer: <a href="http://www.twitter.com/ajevancie">Angela Evancie</a></li>
+                <li>The Developer: <a href="http://www.twitter.com/mattparrilla">Matt Parrilla</a></li>
+            </ul>
+        </div>
+
+        <div id="updated">
+            <p>Updated November 4, 2013: The language of this tool was updated for clarity based on feedback from the Vermont Department of Health Access.</p>
+        </div>
+
+    </div>
+
+    <div id="navigate">
+        <button id="next-link" type="button">Get Started <span class="glyphicon glyphicon-play"></span></button>
+        <p><a id="refresh" href="http://www.vpr.net/apps/health/network">Click here to start over</a></p>
+    </div>
+
+    <div id="network">
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        <p>Made with the <a href="https://github.com/vprnet/app-template">VPR App Template</a> and <a href="http://d3js.org">D3</a>.</p>
+    </footer>
+{% endblock %}
+
+{% block scripts %}
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/connect3-ck.js') }}"></script>
+{% endblock %}
