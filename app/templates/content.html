@@ -1,13 +1,49 @@
 {% extends "base.html" %}
 
-{% block title %}App Template | VPR{% endblock %}
+{% block title %}Vermonters In The Olympics | VPR{% endblock %}
 
 {% block content %}
 <div class="container">
-    <p>This is the VPR App Template</p>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="row">
+            {% for i in range(15) %}
+                <div class="col-sm-4">
+                    <h2>Athelete</h2>
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/kelly-clark-olympics2014.jpg') }}" alt="Kelly Clark Olympic bio photo">
+                </div>
+                {% if loop.index is divisibleby 3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Today's Events</h3>
+                    <p>Biatholon</p>
+                    <p>Curling</p>
+                    <p>Broom Ball</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Vermonter Results</h3>
+                    <p>Gold</p>
+                    <p>Silver</p>
+                    <p>Bronze</p>
+                    <p>Competed</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+{% include "river.html" %}
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/static-ck.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script-ck.js') }}"></script>
 {% endblock %}

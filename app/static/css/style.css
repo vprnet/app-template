@@ -15,7 +15,6 @@ body {
   background-image: -webkit-linear-gradient(top, #56aa33, #4a922b);
   background-image: -o-linear-gradient(top, #56aa33, #4a922b);
   min-height: 40px;
-  border-color: #284f18;
   border-radius: 0 !important; }
   .navbar .navbar-header {
     float: none; }
@@ -2264,3 +2263,52 @@ footer {
 
 .ion-xbox:before {
   content: "\f30c"; }
+
+#river {
+  background: white;
+  padding: 30px 0; }
+  #river h2 {
+    text-align: center;
+    font-size: 62px;
+    font-weight: 300;
+    padding-bottom: 20px; }
+  #river a {
+    color: #646c6c;
+    border-bottom: 2px solid #dddedf; }
+    #river a:hover {
+      text-decoration: none;
+      border-color: #75787b;
+      color: #3f4444; }
+  #river h3.title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4em; }
+    @media (max-width: 768px) {
+      #river h3.title {
+        font-size: 18px; } }
+  #river .story-box {
+    margin-top: 30px; }
+  #river .dateline, #river .byline {
+    font-weight: 400;
+    color: #707979;
+    margin-bottom: 0; }
+  #river .byline {
+    font-size: 12px;
+    margin-top: 5px; }
+  #river #more_stories {
+    text-align: right;
+    font-size: 20px;
+    font-weight: 300; }
+    @media (max-width: 768px) {
+      #river #more_stories {
+        font-size: 18px; } }
+  #river .story_text {
+    margin-top: 20px;
+    font-weight: 300;
+    font-size: 17px; }
+  #river .story_image {
+    max-width: 120px;
+    max-height: 80px; }
+    #river .story_image img {
+      margin-right: 10px; }
