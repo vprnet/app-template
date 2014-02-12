@@ -10,6 +10,7 @@ $btn-percent: 1%;
 $tablet: 768px;
 
 body {
+    padding-top: 45px;
     padding-bottom: 40px;
 }
 
@@ -20,17 +21,16 @@ body {
 }
 
 .navbar {
-    margin-bottom: 0;
     background-color: $green;
     filter: none;
     background-image: linear-gradient(to bottom, lighten($green, $percent), darken($green, $percent));
     background-repeat: repeat-x;
+    border-color: #a2dc8a;
     background-image: -moz-linear-gradient(top, lighten($green, $percent), darken($green, $percent));
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(lighten($green, $percent)), to(darken($green, $percent)));
     background-image: -webkit-linear-gradient(top, lighten($green, $percent), darken($green, $percent));
     background-image: -o-linear-gradient(top, lighten($green, $percent), darken($green, $percent));
     min-height: 40px;
-    border-radius: 0 !important;
     .navbar-header {
         float: none;
     }
@@ -39,12 +39,12 @@ body {
     }
     #navbar-title {
         color: darken(white, 5%);
-        font-size: 22px;
-        font-weight: 300;
+        font-size: 26px;
+        font-weight: 400;
         display: inline;
         position: relative;
-        top: 8px;
-        left: 10px;
+        top: 6px;
+        left: 15px;
         @media (max-width: $tablet) {
             display: none;
         }
@@ -56,12 +56,21 @@ footer {
     float: right;
 }
 
-#underwriter-nav {
-    font-size: 12px;
-    padding-left: 0;
-    margin-top: 3px;
-    li {
-        display: inline
+#google-ad {
+    max-width: 300px;
+    margin: 0 auto;
+    min-height: 300px;
+    #underwriter-nav {
+        font-size: 12px;
+        padding-left: 0;
+        margin-top: 3px;
+        text-align: center;
+        li {
+            display: inline
+        }
+    }
+    @media (max-width: 330px) {
+        margin-left: -5px;
     }
 }
 

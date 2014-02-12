@@ -1,8 +1,8 @@
-{% macro player(mp3, ogg, duration, copy) %}
+{% macro player(file, duration, copy) %}
     <div class="row">
         <div class="col-xs-12">
             <div class="audio_player">
-            <a class="audio_play"><audio src="{{ mp3 }}" ogg="{{ ogg }}" type="audio/mpeg"></audio>
+            <a class="audio_play"><audio src="{{ file }}" preload="auto" type="audio/mpeg"></audio>
                 <div class="play_btn">
                     <span class="glyphicon glyphicon-play"></span>
                 </div></a><div class="progress_bar" data="{{ duration }}" remaining="{{ duration }}"></div>

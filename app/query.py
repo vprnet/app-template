@@ -8,12 +8,11 @@ import os
 from bs4 import BeautifulSoup as Soup
 from datetime import datetime
 from cStringIO import StringIO
-from config import NPR_API_KEY
+from config import NPR_API_KEY, ABSOLUTE_PATH
 
 
 def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
-    """Query the NPR API using given tag ID, return dictionary of results.
-    Call this function in views.py to get a list of stories for a given tag"""
+    """Query the NPR API using given tag ID, return dictionary of results"""
 
     stories = query_api(tag, numResults)
 
@@ -22,17 +21,23 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
         link = story['link'][0]['$text']
         date = convert_date(story['storyDate']['$text'])
         title = story['title']['$text'].strip()
-        byline = story['byline'][0]['name']['$text']
+        byline = {}
+        byline['name'] = story['byline'][0]['name']['$text']
+        byline['url'] = story['byline'][0]['link'][0]['$text']
 
-        try:
+        try:  # if there's an image, determine orientation and define boundary
             story_image = story['image'][0]['crop'][0]
             image = story_image['src']
-            width = story_image['width']
-            height = story_image['height']
+            width = int(story_image['width'])
+            height = int(story_image['height'])
             if int(width) > int(height):
                 landscape = True
+                if width > 728:  # biggest size for landscape photos
+                    width = 728
             else:
                 landscape = False
+                if width > 223:  # biggest size for portrait photos
+                    width = 223
         except KeyError:
             image = False  # set equal to url string for default image
             landscape = False
@@ -60,7 +65,7 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
         if thumbnail:
             try:
                 image_url = story['image'][0]['crop'][0]['src']
-                image = generate_thumbnail(image_url, size=(100, 100))
+                image = generate_thumbnail(image_url, preserve_ratio=True, size=(width, height))
             except KeyError:
                 image = False
 
@@ -79,9 +84,8 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
 
 
 def reporter_list(tag, numResults=50):
-    """Queries the API for bylines and returns an ordered list of name, twitter
-    and a path to a photo. Reporters ordered by number of stories for tag.
-    Call in views.py, returns reporters with more than 1 story and a photo"""
+    """Queries the API for bylines and returns an ordered list of name
+    and a path to a photo. Reporters ordered by number of stories"""
 
     stories = query_api(tag, numResults)
 
@@ -95,7 +99,8 @@ def reporter_list(tag, numResults=50):
             byline['name'] = name
             try:
                 url = story['byline'][0]['link'][0]['$text']
-                byline['url'] = reporter_image(url)
+                byline['url'] = url
+                byline['image_src'] = reporter_image(url)
                 byline['count'] = 1
                 reporters.append(byline)
             except KeyError:
@@ -107,7 +112,7 @@ def reporter_list(tag, numResults=50):
 
     reporters = sorted(reporters, key=lambda k: k['count'], reverse=True)
 
-    with open('app/static/data/twitter.json') as f:
+    with open(ABSOLUTE_PATH + 'static/data/twitter.json') as f:
         twitter_dict = json.load(f)
 
     ranked_list = []
@@ -115,7 +120,7 @@ def reporter_list(tag, numResults=50):
         for twitter in twitter_dict['reporters']:
             if reporter['name'] == twitter['name']:
                 reporter['handle'] = twitter['handle']
-        if reporter['url'] and reporter['count'] > 1:
+        if reporter['image_src'] and reporter['count'] > 1:
             ranked_list.append(reporter)
 
     return ranked_list
@@ -158,17 +163,22 @@ def reporter_image(url):
     return thumbnail
 
 
-def generate_thumbnail(image_url, size=(220, 165)):
+def generate_thumbnail(image_url, preserve_ratio=False, size=(220, 165)):
     """Take an image src, generate a thumbnail, return new path"""
 
     filename = image_url.rsplit('/', 1)[1]
-    path_to_read = 'static/img/thumbnails/' + filename
-    path_to_save = 'app/' + path_to_read
+    path_to_read = 'img/thumbnails/' + filename
+    path_to_save = ABSOLUTE_PATH + 'static/' + path_to_read
 
     if not os.path.isfile(path_to_save):
         img_file = urllib.urlopen(image_url)
         img = StringIO(img_file.read())
         image = Image.open(img)
+        if preserve_ratio:
+            width = image.size[0]
+            height = image.size[1]
+            new_height = size[0] * height / width
+            size = (size[0], new_height)
         im = ImageOps.fit(image, size, Image.ANTIALIAS)
         im.save(path_to_save)
 
