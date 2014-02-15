@@ -9,7 +9,7 @@ $percent: 3%;
 $btn-percent: 1%;
 $tablet: 768px;
 
-@mixin dk_link($bg, $font-color, $border-width) {
+@mixin dk_link($font-color, $bg, $border-width) {
     text-decoration: none;
     border-bottom: $border-width solid lighten($bg, 10%);
     color: darken($font-color, 5%);
@@ -19,7 +19,7 @@ $tablet: 768px;
     }
 }
 
-@mixin lt_link($bg, $font-color, $border-width) {
+@mixin lt_link($font-color, $bg, $border-width) {
     text-decoration: none;
     border-bottom: $border-width solid darken($bg, 10%);
     color: lighten($font-color, 5%);
