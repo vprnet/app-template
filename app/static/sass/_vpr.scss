@@ -9,6 +9,26 @@ $percent: 3%;
 $btn-percent: 1%;
 $tablet: 768px;
 
+@mixin dk_link($bg, $font-color, $border-width) {
+    text-decoration: none;
+    border-bottom: $border-width solid lighten($bg, 10%);
+    color: darken($font-color, 5%);
+    &:hover {
+        border-color: lighten($bg, 40%);
+        color: $font-color;
+    }
+}
+
+@mixin lt_link($bg, $font-color, $border-width) {
+    text-decoration: none;
+    border-bottom: $border-width solid darken($bg, 10%);
+    color: lighten($font-color, 5%);
+    &:hover {
+        border-color: darken($bg, 40%);
+        color: $font-color;
+    }
+}
+
 body {
     padding-top: 45px;
     padding-bottom: 40px;
@@ -67,6 +87,9 @@ footer {
         text-align: center;
         li {
             display: inline
+        }
+        a {
+            @include lt_link($gray, white, 2px);
         }
     }
     @media (max-width: 330px) {
