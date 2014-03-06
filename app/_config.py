@@ -9,7 +9,7 @@ FREEZER_IGNORE_MIMETYPE_WARNINGS = True
 AWS_KEY = ''
 AWS_SECRET_KEY = ''
 AWS_BUCKET = 'www.vpr.net'
-AWS_DIRECTORY = 'apps/app-template'
+AWS_DIRECTORY = 'apps/sandbox'
 
 NPR_API_KEY = ''
 
@@ -29,9 +29,3 @@ else:
     BASE_URL = 'http://' + AWS_BUCKET
 
 ABSOLUTE_PATH = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) + '/'
-
-# If on my computer use local root
-if 'mparrilla' or 'm' in ABSOLUTE_PATH:
-    PROJECT_ROOT = '/'
-else:
-    PROJECT_ROOT = '/' + AWS_DIRECTORY
