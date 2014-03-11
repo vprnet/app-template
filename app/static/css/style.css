@@ -3390,7 +3390,10 @@ body {
 
 footer {
   margin-top: 20px;
-  float: right; }
+  font-size: 12px;
+  color: #75787b; }
+  footer span#copyright {
+    float: right; }
 
 #google-ad {
   max-width: 300px;

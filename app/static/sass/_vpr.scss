@@ -74,7 +74,12 @@ body {
 
 footer {
     margin-top: 20px;
-    float: right;
+    font-size: 12px;
+    color: $gray;
+    span#copyright {
+        float: right;
+    }
+
 }
 
 #google-ad {
