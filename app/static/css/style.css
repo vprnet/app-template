@@ -3365,7 +3365,8 @@ html, body {
   height: 100%; }
 
 #page_container {
-  min-height: 100%; }
+  min-height: 100%;
+  padding-bottom: 57px; }
 
 @media (max-width: 768px) {
   #body {
