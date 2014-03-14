@@ -22,6 +22,7 @@ IGNORE_DIRECTORIES = ['.git', 'venv', 'sass', 'templates', 'gimp']
 IGNORE_FILES = ['.DS_Store']
 IGNORE_FILE_TYPES = ['.gz', '.pyc', '.py', '.rb', '.md']
 
+# Always AWS_DIRECTORY for VPR projects
 if AWS_DIRECTORY:
     BASE_URL = 'http://' + AWS_BUCKET + '/' + AWS_DIRECTORY
     FREEZER_BASE_URL = BASE_URL

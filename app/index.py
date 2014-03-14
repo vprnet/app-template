@@ -12,11 +12,8 @@ app.config.from_object('config')
 from views import *
 
 # Serving from s3 leads to some complications in how static files are served
-if len(sys.argv) > 1:
-    if sys.argv[1] == 'build':
-        PROJECT_ROOT = '/' + AWS_DIRECTORY
-    elif sys.argv[1] == 'test':
-        PROJECT_ROOT = '/www.vpr.net/' + AWS_DIRECTORY
+if len(sys.argv) > 1 and sys.argv[1] == 'build':
+    PROJECT_ROOT = '/' + AWS_DIRECTORY
 else:
     PROJECT_ROOT = '/'
 

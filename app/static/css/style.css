@@ -3353,8 +3353,19 @@ select[multiple].input-lg {
 @media print {
   .hidden-print {
     display: none !important; } }
-body {
-  padding-bottom: 40px; }
+a {
+  border-bottom: 2px solid #e6e6e6;
+  color: #4b5151; }
+  a:hover {
+    text-decoration: none;
+    border-color: #999999;
+    color: #3f4444; }
+
+html, body {
+  height: 100%; }
+
+#page_container {
+  min-height: 100%; }
 
 @media (max-width: 768px) {
   #body {
@@ -3376,6 +3387,8 @@ body {
     float: none; }
   .navbar a.navbar-brand {
     padding: 10px 15px 5px; }
+  .navbar a {
+    border: 0; }
   .navbar #navbar-title {
     color: #f2f2f2;
     font-size: 26px;
@@ -3389,9 +3402,18 @@ body {
         display: none; } }
 
 footer {
-  margin-top: 20px;
+  background: #646c6c;
   font-size: 12px;
-  color: #75787b; }
+  color: #e6e6e6;
+  padding: 20px 0 10px;
+  margin-top: -57px; }
+  footer a {
+    border-bottom: 2px solid #7c8686;
+    color: #d9d9d9; }
+    footer a:hover {
+      text-decoration: none;
+      border-color: #ccd0d0;
+      color: #e6e6e6; }
   footer span#copyright {
     float: right; }
 
@@ -3407,10 +3429,10 @@ footer {
     #google-ad #underwriter-nav li {
       display: inline; }
     #google-ad #underwriter-nav a {
-      text-decoration: none;
       border-bottom: 2px solid #e6e6e6;
       color: #828588; }
       #google-ad #underwriter-nav a:hover {
+        text-decoration: none;
         border-color: #999999;
         color: #75787b; }
   @media (max-width: 330px) {

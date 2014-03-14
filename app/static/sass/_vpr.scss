@@ -10,27 +10,35 @@ $btn-percent: 1%;
 $tablet: 768px;
 
 @mixin dk_link($font-color, $bg, $border-width) {
-    text-decoration: none;
     border-bottom: $border-width solid lighten($bg, 10%);
     color: darken($font-color, 5%);
     &:hover {
+        text-decoration: none;
         border-color: lighten($bg, 40%);
         color: $font-color;
     }
 }
 
 @mixin lt_link($font-color, $bg, $border-width) {
-    text-decoration: none;
     border-bottom: $border-width solid darken($bg, 10%);
     color: lighten($font-color, 5%);
     &:hover {
+        text-decoration: none;
         border-color: darken($bg, 40%);
         color: $font-color;
     }
 }
 
-body {
-    padding-bottom: 40px;
+a {
+    @include lt_link($black, white, 2px);
+}
+
+html, body {
+    height: 100%;
+}
+
+#page_container {
+    min-height: 100%;
 }
 
 @media (max-width: $tablet) {
@@ -58,6 +66,9 @@ body {
     a.navbar-brand {
         padding: 10px 15px 5px;
     }
+    a {
+        border: 0;
+    }
     #navbar-title {
         color: darken(white, 5%);
         font-size: 26px;
@@ -73,13 +84,17 @@ body {
 }
 
 footer {
-    margin-top: 20px;
+    background: lighten($black, 15%);
     font-size: 12px;
-    color: $gray;
+    color: darken(white, 10%);
+    padding: 20px 0 10px;
+    margin-top: -57px;
+    a {
+        @include dk_link(darken(white, 10%), lighten($black, 15%), 2px);
+    }
     span#copyright {
         float: right;
     }
-
 }
 
 #google-ad {

@@ -31,16 +31,18 @@
 
 <body>
 
+<div id="page_container">
 {% block navbar %}{% include "navbar.html" %}{% endblock %}
 
 {% block content %}{% endblock %}
+</div>
 
 {% block footer %}
-<div id=footer_container" class="navbar-fixed-bottom"> <!-- Allows me to do full-width bg for footer -->
-    <div id="footer" class="container">
-        <footer><p><span id="vpr_address">Vermont Public Radio // 365 Troy Avenue // Colchester, VT 05446 // <a href="tel:802-655-9451">(802) 655-9451</a></span> <span id="copyright">&copy; Vermont Public Radio 2014</span></p> </footer>
+<footer>
+    <div class="container">
+        <p><span id="vpr_address">Vermont Public Radio // 365 Troy Avenue // Colchester, VT 05446 // <a href="tel:802-655-9451">(802) 655-9451</a></span> <span id="copyright">&copy; Vermont Public Radio 2014</span></p>
     </div>
-</div>
+</footer>
 {% endblock %}
 
 {% block jquery %}
