@@ -42,12 +42,6 @@ html, body {
     padding-bottom: 57px;
 }
 
-@media (max-width: $tablet) {
-    #body {
-        margin-left: 5px;
-    }
-}
-
 .navbar {
     border: 0;
     border-radius: 0;
@@ -137,3 +131,13 @@ footer {
         }
     }
 }
+
+@media (max-width: $tablet) {
+    footer {
+        padding-bottom: 20px;
+    }
+    #body {
+        margin-left: 5px;
+    }
+}
+
