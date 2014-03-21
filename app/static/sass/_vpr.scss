@@ -96,11 +96,12 @@ footer {
     max-width: 300px;
     margin: 0 auto;
     min-height: 300px;
-    #underwriter-nav {
+    ul#underwriter-nav {
         font-size: 12px;
         padding-left: 0;
         margin-top: 3px;
         text-align: center;
+        color: lighten($gray, 10%);
         li {
             display: inline
         }
