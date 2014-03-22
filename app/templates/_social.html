@@ -1,0 +1,15 @@
+    {% if social %}
+    <meta property="og:description" content="{{ social.description }}" />
+    <meta property="fb:admins" content="5735853" />
+    <meta property="og:title" content="{{ social.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{ page_url }}{{ social.img }}" />
+    <meta property="og:url" content="{{ page_url }}" />
+    <meta property="og:site_name" content="Vermont Public Radio" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@vprnet">
+    <meta name="twitter:title" content="{{ social.title }}">
+    <meta name="twitter:description" content="{{ social.description }}">
+    <meta name="twitter:creator" content="@mattparrilla">
+    <meta name="twitter:image:src" content="{{ page_url }}{{ social.img }}">
+    {% endif %}

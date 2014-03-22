@@ -1,0 +1,14 @@
+{% macro player(file, duration, copy) %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="audio_player">
+            <a class="audio_play"><audio src="{{ file }}" preload="auto" type="audio/mpeg"></audio>
+                <div class="play_btn">
+                    <span class="glyphicon glyphicon-play"></span>
+                </div></a><div class="progress_bar" data="{{ duration }}" remaining="{{ duration }}"></div>
+                <span class="audio_title">{{ copy }}</span>
+                <span class="duration">{% if duration|int > 59 %}{{ duration|int // 60 }} min {% endif %}{{ duration|int % 60 }} sec</span>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
