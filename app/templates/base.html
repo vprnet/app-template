@@ -23,16 +23,16 @@
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
 
-{% include "social.html" %}
-{% block underwriter %}{% include "underwriter_script.html" %}{% endblock %}
-{% include "analytics.html" %}
+{% include "_social.html" %}
+{% block underwriter %}{% include "_underwriter_script.html" %}{% endblock %}
+{% include "_analytics.html" %}
 
 </head>
 
 <body>
 
 <div id="page_container">
-{% block navbar %}{% include "navbar.html" %}{% endblock %}
+{% block navbar %}{% include "_navbar.html" %}{% endblock %}
 
 {% block content %}{% endblock %}
 </div>
