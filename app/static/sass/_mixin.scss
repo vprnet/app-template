@@ -1,0 +1,26 @@
+@mixin dk_link($font-color, $bg, $border-width) {
+    border-bottom: $border-width solid lighten($bg, 10%);
+    color: darken($font-color, 5%);
+    &:hover {
+        text-decoration: none;
+        border-color: lighten($bg, 40%);
+        color: $font-color;
+    }
+}
+
+@mixin lt_link($font-color, $bg, $border-width) {
+    border-bottom: $border-width solid darken($bg, 10%);
+    color: lighten($font-color, 5%);
+    &:hover {
+        text-decoration: none;
+        border-color: darken($bg, 40%);
+        color: $font-color;
+    }
+}
+
+@mixin transition($time) {
+    -webkit-transition: width $time linear !important;
+    -moz-transition: width $time linear !important;
+    -o-transition: width $time linear !important;
+    transition: width $time linear !important;
+}
