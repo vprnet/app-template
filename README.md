@@ -8,7 +8,7 @@ This template assumes that your host is Webfaction and includes a good deal of V
 
 ##Copyright and License
 
-Copyright 2013 Vermont Public Radio
+Copyright 2014 Vermont Public Radio
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License.
 You may obtain a copy of the License in the LICENSE file, or at:
