@@ -13,6 +13,10 @@ AWS_DIRECTORY = 'apps/sandbox'
 
 NPR_API_KEY = ''
 
+GOOGLE_SPREADSHEET = {'USER': '',
+    'PASSWORD': '',
+    'SOURCE': ''}
+
 # Cache Settings (units in seconds)
 STATIC_EXPIRES = 60 * 24 * 3600
 HTML_EXPIRES = 3600
