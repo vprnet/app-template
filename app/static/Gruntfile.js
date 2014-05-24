@@ -2,17 +2,17 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         compass: {
-			dist: {
-				options: {
-					sassDir: 'dev/sass',
-					cssDir: 'css'
-				}
-			}
-		},
+            dist: {
+                options: {
+                    sassDir: 'dev/sass',
+                    cssDir: 'css'
+                }
+            }
+        },
         concat: {
-            //Configuration for concatinating files goes here.
             dist: {
                 src: [
+                    // Explicitly list files to determine order
                     'dev/js/*.js'
                 ],
                 dest: 'js/script.js'
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-browser-sync');
 
-    //Where we tell Grunt what to do when we type "grunt" into the terminal.
+    // What tasks should be run when "grunt" is entered in the command line
     grunt.registerTask('default', ['browserSync', 'watch']);
 
 };
