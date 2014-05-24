@@ -6,6 +6,7 @@ settings.py
 config.py
 venv
 trash
+node_modules
 app/static/img/thumbnails
 
 # C extensions
