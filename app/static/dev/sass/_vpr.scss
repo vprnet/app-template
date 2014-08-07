@@ -36,6 +36,7 @@ html, body {
             color: $white;
             &:hover {
                 color: $blue;
+                text-decoration: none;
             }
         }
         #vpr_logo {
