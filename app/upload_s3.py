@@ -16,6 +16,7 @@ content_types = {
     '.css': 'text/css',
     '.js': 'text/javascript',
     '.png': 'image/png',
+    '.pdf': 'application/pdf',
     '.jpg': 'image/jpeg',
     '.jpeg': 'image/jpeg',
     '.JPG': 'image/jpeg',
