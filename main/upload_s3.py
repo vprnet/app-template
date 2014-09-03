@@ -6,6 +6,7 @@ import gzip
 import time
 import datetime
 import mimetypes
+
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 from config import (AWS_KEY, AWS_SECRET_KEY, AWS_BUCKET, AWS_DIRECTORY,
@@ -27,6 +28,23 @@ def get_files(directory):
     return file_paths
 
 
+def expires_header(duration):
+    """Takes a number of seconds and turns it into an expires header"""
+
+    return time.strftime("%a, %d-%b-%Y %T GMT",
+        time.gmtime(time.time() + duration))
+
+
+def gzip_file(filename):
+    """Does what you think it does"""
+    f_in = open(filename, 'rb')
+    with gzip.open(filename + '.gz', 'w+') as f:
+        f.writelines(f_in)
+    f_in.close()
+    f = filename + '.gz'
+    return f
+
+
 def set_metadata():
     """Take a list of files to be uploaded to s3 and gzip CSS, JS, and HTML,
     setting metadata for all files including an 'expires' header defined
@@ -38,10 +56,8 @@ def set_metadata():
     conn = S3Connection(AWS_KEY, AWS_SECRET_KEY)
     mybucket = conn.get_bucket(AWS_BUCKET)
 
-    expires_header = time.strftime("%a, %d-%b-%Y %T GMT",
-        time.gmtime(time.time() + STATIC_EXPIRES))
-    html_expires_header = time.strftime("%a, %d-%b-%Y %T GMT",
-        time.gmtime(time.time() + HTML_EXPIRES))
+    static_expires = expires_header(STATIC_EXPIRES)
+    html_expires = expires_header(HTML_EXPIRES)
 
     for filename in upload_list:
         k = Key(mybucket)
@@ -54,17 +70,13 @@ def set_metadata():
                 k.key = AWS_DIRECTORY + os.path.splitext(web_path)[0]
             else:
                 k.key = AWS_DIRECTORY + web_path
-            k.set_metadata('Expires', html_expires_header)
+            k.set_metadata('Expires', html_expires)
         else:
             k.key = AWS_DIRECTORY + web_path  # strip leading 0
-            k.set_metadata('Expires', expires_header)
+            k.set_metadata('Expires', static_expires)
 
         if ext in gzip_extensions:
-            f_in = open(filename, 'rb')
-            with gzip.open(filename + '.gz', 'w+') as f:
-                f.writelines(f_in)
-            f_in.close()
-            f = filename + '.gz'
+            f = gzip_file(filename)
             k.set_metadata('Content-Encoding', 'gzip')
         else:
             f = filename
