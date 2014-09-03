@@ -3,12 +3,12 @@
 import sys
 
 from main import app
-from main import upload_s3
+from upload_s3 import set_metadata
 from flask_frozen import Freezer
 
 if len(sys.argv) > 1 and sys.argv[1] == 'freeze':
     freezer = Freezer(app)
     freezer.freeze()
-    upload_s3.set_metadata()
+    set_metadata()
 else:
     app.run()
