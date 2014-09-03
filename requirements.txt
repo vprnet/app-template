@@ -1,13 +1,13 @@
 Flask==0.10.1
-Frozen-Flask==0.11
-Jinja2==2.7.1
-MarkupSafe==0.18
+-e git+https://github.com/SimonSapin/Frozen-Flask.git@508cb0ae8e74cff1411a5bb78dc386beb727dfec#egg=Frozen_Flask-dev
+Jinja2==2.7.3
+MarkupSafe==0.23
 PIL==1.1.7
-Werkzeug==0.9.4
+Werkzeug==0.9.6
 beautifulsoup4==4.3.2
 boto==2.18.0
 gdata==2.0.18
-itsdangerous==0.23
+itsdangerous==0.24
 python-google-spreadsheet==2.0.0
 requests==2.2.1
 wsgiref==0.1.2
