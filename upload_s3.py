@@ -37,6 +37,7 @@ def expires_header(duration):
 
 def gzip_file(filename):
     """Does what you think it does"""
+
     f_in = open(filename, 'rb')
     with gzip.open(filename + '.gz', 'w+') as f:
         f.writelines(f_in)
@@ -47,8 +48,7 @@ def gzip_file(filename):
 
 def set_metadata():
     """Take a list of files to be uploaded to s3 and gzip CSS, JS, and HTML,
-    setting metadata for all files including an 'expires' header defined
-    at the beginning of the file. HTML expires after 1 hour."""
+    setting metadata for all files"""
 
     gzip_extensions = ['.html', '.js', '.css']
 
@@ -59,6 +59,7 @@ def set_metadata():
     static_expires = expires_header(STATIC_EXPIRES)
     html_expires = expires_header(HTML_EXPIRES)
 
+    # define all necessary attributes of each file for s3
     for filename in upload_list:
         k = Key(mybucket)
         ext = os.path.splitext(filename)[1]
