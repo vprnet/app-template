@@ -1,11 +1,9 @@
 from main import app
-from flask import render_template  # , request
-#from config import BASE_URL
+from flask import render_template
 
 
 @app.route('/')
 def index():
-#    page_url = BASE_URL + request.path
     page_title = 'VPR App Template'
 
     social = {
