@@ -28,4 +28,6 @@ FREEZER_BASE_URL = 'http://%s/%s' % (AWS_BUCKET, AWS_DIRECTORY)
 FREEZER_STATIC_IGNORE = ['Gruntfile*', 'node_modules', 'package.json',
     'dev', '.sass-cache']
 
+WEBFACTION_PATH = AWS_DIRECTORY
+
 ABSOLUTE_PATH = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) + '/'

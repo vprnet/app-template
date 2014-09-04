@@ -1,4 +1,5 @@
 from flask import Flask
+from config import WEBFACTION_PATH
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -12,10 +13,10 @@ class WebFactionMiddleware(object):
         self.app = app
 
     def __call__(self, environ, start_response):
-        environ['SCRIPT_NAME'] = '/test'
+        environ['SCRIPT_NAME'] = WEBFACTION_PATH
         return self.app(environ, start_response)
 
-app.wsgi_app = WebFactionMiddleware(app.wsgi_app)
 
 if __name__ == '__main__':
+    app.wsgi_app = WebFactionMiddleware(app.wsgi_app)
     app.run()
