@@ -45,11 +45,22 @@ module.exports = function (grunt) {
             },
             css: {
                 files: 'dev/sass/*.scss',
-                tasks: ['compass']
+                tasks: ['compass', 'cssmin']
             },
             images: {
                 files: 'dev/img/*',
                 tasks: ['imagemin']
+            }
+        },
+        cssmin: {
+            my_target: {
+                files: [{
+                    expand: true,
+                    cwd: 'css/',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'css/',
+                    ext: '.min.css'
+                }]
             }
         },
         browserSync: {
@@ -70,6 +81,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     // What tasks should be run when "grunt" is entered in the command line
     grunt.registerTask('default', ['browserSync', 'watch']);

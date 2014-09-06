@@ -1,6 +1,7 @@
 *.py[cod]
 *.gz
 *.DS_Store
+*.min.css
 upload_static.py
 settings.py
 config.py
@@ -8,7 +9,6 @@ venv
 trash
 node_modules
 .sass-cache
-app/static/img/thumbnails
 
 # C extensions
 *.so
