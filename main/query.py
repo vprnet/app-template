@@ -193,8 +193,8 @@ def generate_thumbnail(image_url, preserve_ratio=False, size=(220, 165)):
     """Take an image src, generate a thumbnail, return new path"""
 
     filename = image_url.rsplit('/', 1)[1]
-    path_to_read = 'img/thumbnails/' + filename
-    path_to_save = ABSOLUTE_PATH + 'static/' + path_to_read
+    path_to_read = 'img/' + filename
+    path_to_save = "%smain/static/dev/%s" % (ABSOLUTE_PATH, path_to_read)
 
     if not os.path.isfile(path_to_save):
         img_file = urllib.urlopen(image_url)

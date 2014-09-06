@@ -10,6 +10,6 @@
     <meta name="twitter:site" content="@vprnet">
     <meta name="twitter:title" content="{{ social.title }}">
     <meta name="twitter:description" content="{{ social.description }}">
-    <meta name="twitter:creator" content="@mattparrilla">
+    <meta name="twitter:creator" content="{% if social.creator %}{{ social.creator }}{% else %}@vprnet{% endif %}">
     <meta name="twitter:image:src" content="{{ social.img }}">
     {% endif %}

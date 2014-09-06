@@ -14,6 +14,7 @@ def index():
         'img': "",
         'description': "",
         'twitter_text': "",
+        'creator': "",
         'twitter_hashtag': ""
     }
 
