@@ -1,5 +1,5 @@
 Flask==0.10.1
--e git+https://github.com/SimonSapin/Frozen-Flask.git@508cb0ae8e74cff1411a5bb78dc386beb727dfec#egg=Frozen_Flask-dev
+-e git://github.com/SimonSapin/Frozen-Flask.git@508cb0ae8e74cff1411a5bb78dc386beb727dfec#egg=Frozen_Flask-dev
 Jinja2==2.7.3
 MarkupSafe==0.23
 PIL==1.1.7
