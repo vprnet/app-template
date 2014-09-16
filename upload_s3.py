@@ -9,7 +9,7 @@ import mimetypes
 
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
-from config import (AWS_KEY, AWS_SECRET_KEY, AWS_BUCKET, AWS_DIRECTORY,
+from main.config import (AWS_KEY, AWS_SECRET_KEY, AWS_BUCKET, AWS_DIRECTORY,
     HTML_EXPIRES, STATIC_EXPIRES, ABSOLUTE_PATH)
 
 PUSH_FROM = ABSOLUTE_PATH + 'build'
