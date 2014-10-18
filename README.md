@@ -38,26 +38,27 @@ This stack is used by VPR to publish news apps and can be used for anything from
 
         $ pip install -r requirements.txt
 
-6. Change `_config.py` to `config.py`
+6. Copy `_config.py` as `config.py`
 
-        $ mv app/_config.py app/config.py
+        $ cp main/_config.py main/config.py
+
 These settings can be configured later (see "Deploy" below)
 
 7. Install grunt modules ([read this](http://24ways.org/2013/grunt-is-not-weird-and-hard/) if getting started with Grunt)
 
-        $ cd app/static
+        $ cd main/static
         $ npm install
 
 ##Develop
 
 To get grunt running in the background:
 
-        $ cd app/static
+        $ cd main/static
         $ grunt
 
 To run local server, get back to project root and run:
 
-        $ python app/index.py
+        $ python runserver.py
 
 The project will be viewable at http://127.0.0.1:5000/
 
@@ -69,7 +70,7 @@ The project will be viewable at http://127.0.0.1:5000/
 
 4. Freeze files and push to S3
 
-        $ python app/index.py build
+        $ python runserver.py freeze
 
 ## Author
 [Matt Parrilla](http://twitter.com/mattparrilla)

@@ -11,7 +11,7 @@ from cStringIO import StringIO
 from config import NPR_API_KEY, ABSOLUTE_PATH
 
 
-def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
+def api_feed(tag, numResults=1, char_limit=240, thumbnail=False, sidebar=False):
     """Query the NPR API using given tag ID, return dictionary of results"""
 
     stories = query_api(tag, numResults)
@@ -26,8 +26,11 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
         byline['url'] = story['byline'][0]['link'][0]['$text']
 
         try:  # if there's an image, determine orientation and define boundary
+            image = True
             story_image = story['image'][0]['crop'][0]
-            image = story_image['src']
+            image_url = story_image['src']
+            if "?" in image_url:
+                image_url = image_url.split('?')[0]
             width = int(story_image['width'])
             height = int(story_image['height'])
             if int(width) > int(height):
@@ -50,8 +53,8 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
         except KeyError:
             audio = False
 
-        full_text = [i['$text'] for i in story['text']['paragraph'] if len(i) > 1]
         # if len(i) > 1 ignores pars w/ no text, i.e. when images or audio
+        full_text = [i['$text'] for i in story['text']['paragraph'] if len(i) > 1]
 
         char_count = 0
         paragraphs_needed = 0
@@ -62,11 +65,14 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
 
         text = full_text[:paragraphs_needed]
 
-        if thumbnail:
+        if thumbnail and image:
             try:
-                image_url = story['image'][0]['crop'][0]['src']
-                image = generate_thumbnail(image_url, preserve_ratio=True, size=(width, height))
+                if sidebar:
+                    image = generate_thumbnail(image_url, preserve_ratio=True, size=(326, 326))
+                else:
+                    image = generate_thumbnail(image_url, preserve_ratio=True, size=(width, height))
             except KeyError:
+                print image_url
                 image = False
 
         story_list.append({
