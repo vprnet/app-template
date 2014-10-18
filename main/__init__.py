@@ -2,7 +2,7 @@ from flask import Flask
 from config import WEBFACTION_PATH
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_object('main.config')
 
 from main import views
 
