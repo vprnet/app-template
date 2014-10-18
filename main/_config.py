@@ -23,7 +23,7 @@ HTML_EXPIRES = 3600
 # Frozen Flask
 FREEZER_DEFAULT_MIMETYPE = 'text/html'
 FREEZER_IGNORE_MIMETYPE_WARNINGS = True
-FREEZER_DESTINATION = '../build'
+FREEZER_DESTINATION = 'build'
 FREEZER_BASE_URL = 'http://%s/%s' % (AWS_BUCKET, AWS_DIRECTORY)
 FREEZER_STATIC_IGNORE = ['Gruntfile*', 'node_modules', 'package.json',
     'dev', '.sass-cache']

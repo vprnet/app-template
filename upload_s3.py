@@ -63,6 +63,8 @@ def set_metadata():
     for filename in upload_list:
         k = Key(mybucket)
         ext = os.path.splitext(filename)[1]
+        if not ext:
+            ext = '.html'
         web_path = filename.split('build/')[1]
 
         # Set expires for HTML, remove extension if not index
