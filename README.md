@@ -42,7 +42,7 @@ This stack is used by VPR to publish news apps and can be used for anything from
 
         $ cp main/_config.py main/config.py
 
-These settings can be configured later (see "Deploy" below)
+  These settings can be configured later (see "Deploy" below)
 
 7. Install grunt modules ([read this](http://24ways.org/2013/grunt-is-not-weird-and-hard/) if getting started with Grunt)
 
