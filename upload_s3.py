@@ -7,7 +7,7 @@ import time
 import datetime
 import mimetypes
 
-from boto.s3.connection import S3Connection
+from boto.s3.connection import S3Connection, OrdinaryCallingFormat
 from boto.s3.key import Key
 from main.config import (AWS_KEY, AWS_SECRET_KEY, AWS_BUCKET, AWS_DIRECTORY,
     HTML_EXPIRES, STATIC_EXPIRES, ABSOLUTE_PATH)
@@ -53,7 +53,7 @@ def set_metadata():
     gzip_extensions = ['.html', '.js', '.css']
 
     upload_list = get_files(PUSH_FROM)
-    conn = S3Connection(AWS_KEY, AWS_SECRET_KEY)
+    conn = S3Connection(AWS_KEY, AWS_SECRET_KEY, calling_format=OrdinaryCallingFormat())
     mybucket = conn.get_bucket(AWS_BUCKET)
 
     static_expires = expires_header(STATIC_EXPIRES)
