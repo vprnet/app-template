@@ -1,8 +1,8 @@
 #!/usr/bin/python
 import json
 import requests
-import Image
-import ImageOps
+from PIL import Image
+from PIL import ImageOps
 import urllib
 import os
 from bs4 import BeautifulSoup as Soup
